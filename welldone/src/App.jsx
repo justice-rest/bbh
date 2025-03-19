@@ -328,24 +328,24 @@ function App() {
   }, [results]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-900 text-white">
-      <header className="bg-gray-800 p-4 shadow-md">
-        <h1 className="text-2xl font-bold text-center text-green-500">Anti Motivator</h1>
-        <p className="text-center text-gray-400 mt-1">Let's see how downbad you are</p>
+    <div className="flex flex-col min-h-screen bg-black text-white font-sans">
+      <header className="border-b border-gray-800 p-6">
+        <h1 className="text-2xl font-medium text-center">Anti Motivator</h1>
+        <p className="text-center text-gray-400 mt-1 text-sm">Let's see how downbad you are</p>
       </header>
 
-      <main className="flex-grow p-4 md:p-8 max-w-4xl mx-auto w-full">
-        <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-6">
-          <h2 className="text-xl font-semibold mb-4">Upload WhatsApp Chat</h2>
+      <main className="flex-grow p-6 md:p-8 max-w-3xl mx-auto w-full">
+        <div className="border border-gray-800 p-6 rounded-lg mb-8">
+          <h2 className="text-lg font-medium mb-4">Upload WhatsApp Chat</h2>
 
           <div className="mb-6">
-            <p className="text-gray-400 mb-3 text-sm">
-              Export your WhatsApp chat without media and upload the .txt file here
+            <p className="text-gray-400 mb-4 text-sm">
+              Export your WhatsApp chat without media and upload the .txt file
             </p>
 
             <div className="flex flex-col md:flex-row items-center gap-4">
               <label className="flex-grow w-full">
-                <div className="bg-gray-700 border border-gray-600 rounded-md px-4 py-3 cursor-pointer hover:bg-gray-600 transition duration-200 text-center">
+                <div className="border border-gray-800 rounded px-4 py-3 cursor-pointer hover:bg-gray-900 transition duration-200 text-center text-sm">
                   {fileName || "Choose WhatsApp chat export (.txt)"}
                 </div>
                 <input
@@ -359,10 +359,10 @@ function App() {
               <button
                 onClick={analyzeChat}
                 disabled={analyzing || !file}
-                className={`px-6 py-3 rounded-full font-medium ${
+                className={`px-6 py-3 rounded-md text-sm font-medium ${
                   analyzing || !file
-                    ? 'bg-gray-600 cursor-not-allowed'
-                    : 'bg-green-500 hover:bg-green-600 text-black'
+                    ? 'bg-gray-800 cursor-not-allowed'
+                    : 'bg-white text-black hover:bg-gray-200'
                 } transition duration-200`}
               >
                 {analyzing ? "Analyzing..." : "Analyze Chat"}
@@ -370,7 +370,7 @@ function App() {
             </div>
 
             {error && (
-              <div className="mt-3 text-red-400">
+              <div className="mt-3 text-red-400 text-sm">
                 <p>{error}</p>
               </div>
             )}
@@ -378,94 +378,118 @@ function App() {
         </div>
 
         {results && !results.error && (
-          <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-            <h2 className="text-xl font-semibold mb-4">Chat Analysis Results</h2>
+          <div className="border border-gray-800 p-6 rounded-lg">
+            <h2 className="text-lg font-medium mb-6">Chat Analysis Results</h2>
 
-            <div className="mb-6">
-              <h3 className="text-lg font-medium mb-2">Participants</h3>
-              <ul className="list-disc list-inside text-gray-400">
+            <div className="mb-8">
+              <h3 className="text-base font-medium mb-2">Participants</h3>
+              <ul className="text-gray-400 text-sm space-y-1">
                 {results.participants.map((participant, index) => (
-                  <li key={index}>{participant}</li>
+                  <li key={index}>• {participant}</li>
                 ))}
               </ul>
             </div>
 
-            <div className="mb-6">
-              <h3 className="text-lg font-medium mb-2">Metrics for {results.primaryUsers[0]} and {results.primaryUsers[1]}</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <h4 className="font-semibold">{results.primaryUsers[0]}</h4>
-                  <p>Messages: {results.metrics.messageCount[results.primaryUsers[0]]}</p>
-                  <p>Text Length: {results.metrics.textLength[results.primaryUsers[0]]}</p>
-                  <p>Avg Response Time: {results.metrics.responseTime[results.primaryUsers[0]].toFixed(2)} min</p>
-                  <p>Max Ignored Time: {results.metrics.maxIgnoredTime[results.primaryUsers[0]].toFixed(2)} min</p>
+            <div className="mb-8">
+              <h3 className="text-base font-medium mb-3">Metrics</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="border border-gray-800 p-4 rounded-md">
+                  <h4 className="font-medium mb-2">{results.primaryUsers[0]}</h4>
+                  <p className="text-gray-400 text-sm mb-1">Messages: {results.metrics.messageCount[results.primaryUsers[0]]}</p>
+                  <p className="text-gray-400 text-sm mb-1">Text Length: {results.metrics.textLength[results.primaryUsers[0]]}</p>
+                  <p className="text-gray-400 text-sm mb-1">Avg Response: {results.metrics.responseTime[results.primaryUsers[0]].toFixed(2)} min</p>
+                  <p className="text-gray-400 text-sm">Max Ignored: {results.metrics.maxIgnoredTime[results.primaryUsers[0]].toFixed(2)} min</p>
                 </div>
-                <div>
-                  <h4 className="font-semibold">{results.primaryUsers[1]}</h4>
-                  <p>Messages: {results.metrics.messageCount[results.primaryUsers[1]]}</p>
-                  <p>Text Length: {results.metrics.textLength[results.primaryUsers[1]]}</p>
-                  <p>Avg Response Time: {results.metrics.responseTime[results.primaryUsers[1]].toFixed(2)} min</p>
-                  <p>Max Ignored Time: {results.metrics.maxIgnoredTime[results.primaryUsers[1]].toFixed(2)} min</p>
+                <div className="border border-gray-800 p-4 rounded-md">
+                  <h4 className="font-medium mb-2">{results.primaryUsers[1]}</h4>
+                  <p className="text-gray-400 text-sm mb-1">Messages: {results.metrics.messageCount[results.primaryUsers[1]]}</p>
+                  <p className="text-gray-400 text-sm mb-1">Text Length: {results.metrics.textLength[results.primaryUsers[1]]}</p>
+                  <p className="text-gray-400 text-sm mb-1">Avg Response: {results.metrics.responseTime[results.primaryUsers[1]].toFixed(2)} min</p>
+                  <p className="text-gray-400 text-sm">Max Ignored: {results.metrics.maxIgnoredTime[results.primaryUsers[1]].toFixed(2)} min</p>
                 </div>
               </div>
             </div>
 
-            <div className="mb-6">
-              <h3 className="text-lg font-medium mb-2">Scores</h3>
-              <p>{results.primaryUsers[0]}: {results.score[results.primaryUsers[0]]}</p>
-              <p>{results.primaryUsers[1]}: {results.score[results.primaryUsers[1]]}</p>
+            <div className="mb-8">
+              <h3 className="text-base font-medium mb-3">Scores</h3>
+              <div className="flex justify-between items-center border border-gray-800 p-4 rounded-md">
+                <div>
+                  <p className="text-sm text-gray-400">{results.primaryUsers[0]}</p>
+                  <p className="text-lg">{results.score[results.primaryUsers[0]]}</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-xs text-gray-500">vs</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-sm text-gray-400">{results.primaryUsers[1]}</p>
+                  <p className="text-lg">{results.score[results.primaryUsers[1]]}</p>
+                </div>
+              </div>
             </div>
 
-            <div className="mb-6">
-              <h3 className="text-lg font-medium mb-2">Roast</h3>
-              <blockquote className="border-l-4 border-green-500 pl-4 italic text-gray-400">
-                {results.roast || "Generating roast..."}
-              </blockquote>
-              <button
-                onClick={() => {
-                  if (window.speechSynthesis && results.roast) {
-                    const utterance = new SpeechSynthesisUtterance(results.roast);
-                    utterance.lang = 'en-US';
-                    window.speechSynthesis.speak(utterance);
-                  }
-                }}
-                className="mt-2 px-4 py-2 bg-blue-500 text-white rounded"
-              >
-                Listen Again
-              </button>
+            <div className="mb-8">
+              <h3 className="text-base font-medium mb-3">Roast</h3>
+              <div className="border border-gray-800 p-4 rounded-md">
+                <p className="text-gray-400 text-sm italic">
+                  {results.roast || "Generating roast..."}
+                </p>
+                <button
+                  onClick={() => {
+                    if (window.speechSynthesis && results.roast) {
+                      const utterance = new SpeechSynthesisUtterance(results.roast);
+                      utterance.lang = 'en-US';
+                      window.speechSynthesis.speak(utterance);
+                    }
+                  }}
+                  className="mt-4 px-4 py-2 bg-white text-black text-sm rounded-md hover:bg-gray-200 transition"
+                >
+                  Listen
+                </button>
+              </div>
             </div>
 
-            <div className="mt-6">
-              <h3 className="text-lg font-medium mb-2">Share your shame</h3>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleImageSelect}
-                className="mb-2"
-              />
-              {selectedImage && (
-                <img
-                  src={URL.createObjectURL(selectedImage)}
-                  alt="Preview"
-                  style={{ maxWidth: '300px', marginTop: '10px', marginBottom: '10px' }}
-                />
-              )}
-              <button
-                onClick={handlePostToTwitter}
-                disabled={!selectedImage}
-                className={`px-4 py-2 rounded ${
-                  selectedImage ? 'bg-blue-500 text-white' : 'bg-gray-500 cursor-not-allowed'
-                }`}
-              >
-                Post to Twitter
-              </button>
+            <div className="mt-8">
+              <h3 className="text-base font-medium mb-3">Share Your Shame</h3>
+              <div className="border border-gray-800 p-4 rounded-md">
+                <label className="block mb-3">
+                  <div className="border border-gray-800 rounded px-4 py-3 cursor-pointer hover:bg-gray-900 transition duration-200 text-center text-sm">
+                    {selectedImage ? "Change Image" : "Choose an image to share"}
+                  </div>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageSelect}
+                    className="hidden"
+                  />
+                </label>
+                
+                {selectedImage && (
+                  <div className="mb-4">
+                    <img
+                      src={URL.createObjectURL(selectedImage)}
+                      alt="Preview"
+                      className="max-h-40 mx-auto"
+                    />
+                  </div>
+                )}
+                
+                <button
+                  onClick={handlePostToTwitter}
+                  disabled={!selectedImage}
+                  className={`w-full py-2 rounded-md text-sm ${
+                    selectedImage ? 'bg-white text-black hover:bg-gray-200' : 'bg-gray-800 text-gray-500 cursor-not-allowed'
+                  } transition`}
+                >
+                  Post to Twitter
+                </button>
+              </div>
             </div>
           </div>
         )}
 
         {results && results.error && (
-          <div className="bg-red-900 p-4 rounded-lg">
-            <p className="text-red-200">{results.error}</p>
+          <div className="border border-red-900 p-4 rounded-lg mt-6">
+            <p className="text-red-400 text-sm">{results.error}</p>
           </div>
         )}
       </main>

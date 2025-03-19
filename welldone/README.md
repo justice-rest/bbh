@@ -1,12 +1,29 @@
-# React + Vite
+# Welldone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a minimalist, black-and-white dashboard built using React + Vite.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Clone the Repository
+```sh
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
+```
 
-## Expanding the ESLint configuration
+### Install Dependencies
+```sh
+npm install
+```
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Run the Development Server
+```sh
+npm run dev
+```
+
+The app will be available at http://localhost:5173/ by default.
+
+## Usage Guide
+1. Upload a WhatsApp chat export file (`.txt`).
+2. Process the file and display analytics in a table.
+3. View data metrics and file status.
+

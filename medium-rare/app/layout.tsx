@@ -7,9 +7,9 @@ import { Toaster } from "sonner";
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
-	title: "Swift",
+	title: "Medium Rare - BurnedByHER",
 	description:
-		"A fast, open-source voice assistant powered by Groq, Cartesia, and Vercel.",
+		"An authentic roasting experience",
 };
 
 export default function RootLayout({
