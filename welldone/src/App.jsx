@@ -441,7 +441,7 @@ function App() {
                       window.speechSynthesis.speak(utterance);
                     }
                   }}
-                  className="mt-4 px-4 py-2 bg-white text-black text-sm rounded-md hover:bg-gray-200 transition"
+                  className="mt-4 px-4 py-2 bg-white text-black text-sm rounded-md transition"
                 >
                   Listen
                 </button>
