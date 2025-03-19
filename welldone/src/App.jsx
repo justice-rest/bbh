@@ -441,7 +441,7 @@ function App() {
                       window.speechSynthesis.speak(utterance);
                     }
                   }}
-                  className="mt-4 px-4 py-2 bg-white text-black text-sm rounded-md transition"
+                  className="mt-4 px-4 py-2 bg-white text-white text-sm rounded-md transition"
                 >
                   Listen
                 </button>
@@ -477,7 +477,7 @@ function App() {
                   onClick={handlePostToTwitter}
                   disabled={!selectedImage}
                   className={`w-full py-2 rounded-md text-sm ${
-                    selectedImage ? 'bg-white text-black' : 'bg-white text-black-500 cursor-not-allowed'
+                    selectedImage ? 'bg-white text-black' : 'bg-white text-white cursor-not-allowed'
                   } transition`}
                 >
                   Post to Twitter
