@@ -330,7 +330,7 @@ function App() {
   return (
     <div className="flex flex-col min-h-screen min-w-screen bg-white text-black font-sans">
       <header className="border-b border-gray-800 p-6">
-        <h1 className="text-2xl font-medium text-center">Anti Motivator</h1>
+        <h1 className="text-2xl font-medium text-center">WellDone 🌴</h1>
         <p className="text-center text-black-400 mt-1 text-sm">Let's see how downbad you are</p>
       </header>
 
