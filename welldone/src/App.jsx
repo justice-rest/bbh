@@ -328,24 +328,24 @@ function App() {
   }, [results]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-black text-white font-sans">
+    <div className="flex flex-col min-h-screen bg-white text-black font-sans">
       <header className="border-b border-gray-800 p-6">
         <h1 className="text-2xl font-medium text-center">Anti Motivator</h1>
-        <p className="text-center text-gray-400 mt-1 text-sm">Let's see how downbad you are</p>
+        <p className="text-center text-black-400 mt-1 text-sm">Let's see how downbad you are</p>
       </header>
 
-      <main className="flex-grow p-6 md:p-8 max-w-3xl mx-auto w-full">
-        <div className="border border-gray-800 p-6 rounded-lg mb-8">
+      <main className="flex-grow p-6 md:p-8 max-w-6xl mx-auto w-full">
+        <div className="border border-black-800 p-6 rounded-lg mb-8">
           <h2 className="text-lg font-medium mb-4">Upload WhatsApp Chat</h2>
 
           <div className="mb-6">
-            <p className="text-gray-400 mb-4 text-sm">
+            <p className="text-black-400 mb-4 text-sm">
               Export your WhatsApp chat without media and upload the .txt file
             </p>
 
             <div className="flex flex-col md:flex-row items-center gap-4">
               <label className="flex-grow w-full">
-                <div className="border border-gray-800 rounded px-4 py-3 cursor-pointer hover:bg-gray-900 transition duration-200 text-center text-sm">
+                <div className="border border-black-800 rounded px-4 py-3 cursor-pointer transition duration-200 text-center text-sm">
                   {fileName || "Choose WhatsApp chat export (.txt)"}
                 </div>
                 <input
@@ -357,16 +357,16 @@ function App() {
               </label>
 
               <button
-                onClick={analyzeChat}
-                disabled={analyzing || !file}
-                className={`px-6 py-3 rounded-md text-sm font-medium ${
-                  analyzing || !file
-                    ? 'bg-gray-800 cursor-not-allowed'
-                    : 'bg-white text-black hover:bg-gray-200'
-                } transition duration-200`}
-              >
-                {analyzing ? "Analyzing..." : "Analyze Chat"}
-              </button>
+                  onClick={analyzeChat}
+                  disabled={analyzing || !file}
+                  className={`px-6 py-3 rounded-md text-sm font-medium transition duration-200 ${
+                    analyzing || !file
+                      ? 'bg-gray-700 text-gray-400 cursor-not-allowed'
+                      : 'bg-white text-black'
+                  }`}
+                >
+                  {analyzing ? "Analyzing..." : "Analyze Chat"}
+                </button>
             </div>
 
             {error && (
@@ -383,7 +383,7 @@ function App() {
 
             <div className="mb-8">
               <h3 className="text-base font-medium mb-2">Participants</h3>
-              <ul className="text-gray-400 text-sm space-y-1">
+              <ul className="text-black-400 text-sm space-y-1">
                 {results.participants.map((participant, index) => (
                   <li key={index}>• {participant}</li>
                 ))}
@@ -395,17 +395,17 @@ function App() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="border border-gray-800 p-4 rounded-md">
                   <h4 className="font-medium mb-2">{results.primaryUsers[0]}</h4>
-                  <p className="text-gray-400 text-sm mb-1">Messages: {results.metrics.messageCount[results.primaryUsers[0]]}</p>
-                  <p className="text-gray-400 text-sm mb-1">Text Length: {results.metrics.textLength[results.primaryUsers[0]]}</p>
-                  <p className="text-gray-400 text-sm mb-1">Avg Response: {results.metrics.responseTime[results.primaryUsers[0]].toFixed(2)} min</p>
-                  <p className="text-gray-400 text-sm">Max Ignored: {results.metrics.maxIgnoredTime[results.primaryUsers[0]].toFixed(2)} min</p>
+                  <p className="text-black-400 text-sm mb-1">Messages: {results.metrics.messageCount[results.primaryUsers[0]]}</p>
+                  <p className="text-black-400 text-sm mb-1">Text Length: {results.metrics.textLength[results.primaryUsers[0]]}</p>
+                  <p className="text-black-400 text-sm mb-1">Avg Response: {results.metrics.responseTime[results.primaryUsers[0]].toFixed(2)} min</p>
+                  <p className="text-black-400 text-sm">Max Ignored: {results.metrics.maxIgnoredTime[results.primaryUsers[0]].toFixed(2)} min</p>
                 </div>
                 <div className="border border-gray-800 p-4 rounded-md">
                   <h4 className="font-medium mb-2">{results.primaryUsers[1]}</h4>
-                  <p className="text-gray-400 text-sm mb-1">Messages: {results.metrics.messageCount[results.primaryUsers[1]]}</p>
-                  <p className="text-gray-400 text-sm mb-1">Text Length: {results.metrics.textLength[results.primaryUsers[1]]}</p>
-                  <p className="text-gray-400 text-sm mb-1">Avg Response: {results.metrics.responseTime[results.primaryUsers[1]].toFixed(2)} min</p>
-                  <p className="text-gray-400 text-sm">Max Ignored: {results.metrics.maxIgnoredTime[results.primaryUsers[1]].toFixed(2)} min</p>
+                  <p className="text-black-400 text-sm mb-1">Messages: {results.metrics.messageCount[results.primaryUsers[1]]}</p>
+                  <p className="text-black-400 text-sm mb-1">Text Length: {results.metrics.textLength[results.primaryUsers[1]]}</p>
+                  <p className="text-black-400 text-sm mb-1">Avg Response: {results.metrics.responseTime[results.primaryUsers[1]].toFixed(2)} min</p>
+                  <p className="text-black-400 text-sm">Max Ignored: {results.metrics.maxIgnoredTime[results.primaryUsers[1]].toFixed(2)} min</p>
                 </div>
               </div>
             </div>
@@ -414,14 +414,14 @@ function App() {
               <h3 className="text-base font-medium mb-3">Scores</h3>
               <div className="flex justify-between items-center border border-gray-800 p-4 rounded-md">
                 <div>
-                  <p className="text-sm text-gray-400">{results.primaryUsers[0]}</p>
+                  <p className="text-sm text-black-400">{results.primaryUsers[0]}</p>
                   <p className="text-lg">{results.score[results.primaryUsers[0]]}</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-xs text-gray-500">vs</p>
+                  <p className="text-xs text-black-500">vs</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm text-gray-400">{results.primaryUsers[1]}</p>
+                  <p className="text-sm text-black-400">{results.primaryUsers[1]}</p>
                   <p className="text-lg">{results.score[results.primaryUsers[1]]}</p>
                 </div>
               </div>
@@ -430,7 +430,7 @@ function App() {
             <div className="mb-8">
               <h3 className="text-base font-medium mb-3">Roast</h3>
               <div className="border border-gray-800 p-4 rounded-md">
-                <p className="text-gray-400 text-sm italic">
+                <p className="text-black-400 text-sm italic">
                   {results.roast || "Generating roast..."}
                 </p>
                 <button
@@ -452,7 +452,7 @@ function App() {
               <h3 className="text-base font-medium mb-3">Share Your Shame</h3>
               <div className="border border-gray-800 p-4 rounded-md">
                 <label className="block mb-3">
-                  <div className="border border-gray-800 rounded px-4 py-3 cursor-pointer hover:bg-gray-900 transition duration-200 text-center text-sm">
+                  <div className="border border-gray-800 rounded px-4 py-3 cursor-pointer transition duration-200 text-center text-sm">
                     {selectedImage ? "Change Image" : "Choose an image to share"}
                   </div>
                   <input
@@ -477,7 +477,7 @@ function App() {
                   onClick={handlePostToTwitter}
                   disabled={!selectedImage}
                   className={`w-full py-2 rounded-md text-sm ${
-                    selectedImage ? 'bg-white text-black hover:bg-gray-200' : 'bg-gray-800 text-gray-500 cursor-not-allowed'
+                    selectedImage ? 'bg-white text-black' : 'bg-white text-black-500 cursor-not-allowed'
                   } transition`}
                 >
                   Post to Twitter
