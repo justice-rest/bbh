@@ -361,8 +361,8 @@ function App() {
                   disabled={analyzing || !file}
                   className={`px-6 py-3 rounded-md text-sm font-medium transition duration-200 ${
                     analyzing || !file
-                      ? 'bg-gray-700 text-gray-400 cursor-not-allowed'
-                      : 'bg-white text-black'
+                      ? 'bg-white text-white cursor-not-allowed'
+                      : 'bg-white text-white'
                   }`}
                 >
                   {analyzing ? "Analyzing..." : "Analyze Chat"}
@@ -418,7 +418,7 @@ function App() {
                   <p className="text-lg">{results.score[results.primaryUsers[0]]}</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-xs text-black-500">vs</p>
+                  <p className="text-1xl text-black-500">/</p>
                 </div>
                 <div className="text-right">
                   <p className="text-sm text-black-400">{results.primaryUsers[1]}</p>
